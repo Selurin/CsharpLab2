@@ -52,6 +52,22 @@ internal class Time
         }
     }
 
+    public int GetHours()
+    {
+        return this.seconds / 3600;
+    }
+
+    public int GetMinutes()
+    {
+        return (this.seconds % 3600) / 60;
+    }
+
+    public int GetSeconds()
+    {
+        return this.seconds % 60;
+    }
+
+
     public override string ToString()
     {
         int hours = this.seconds / 3600;

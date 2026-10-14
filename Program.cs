@@ -31,6 +31,7 @@ internal class Program
                     Console.WriteLine("Выберите способ ввода времени:");
                     Console.WriteLine("1 - ввести количество секунд");
                     Console.WriteLine("2 - ввести часы, минуты, секунды через пробел");
+                    Console.WriteLine("3 - ввести количество секунд для возврата текущего времени");
                     string? choice14 = Console.ReadLine();
 
                     if (choice14 == "1")
@@ -64,7 +65,7 @@ internal class Program
                                     Time time = new Time(hours, minutes, secs);
                                     Console.WriteLine("Текстовая форма: " + time.ToString());
 
-                                    Console.WriteLine("Проверка для заданных значений:");
+                                    Console.WriteLine("\nПроверка для заданных значений:");
 
                                     Time t1 = new Time(10000);
                                     Console.WriteLine("10000 секунд = " + t1.ToString());
@@ -79,6 +80,29 @@ internal class Program
                             }
                         }
                     }
+
+                    else if (choice14 == "3")
+                    {
+                        if (TryReadInt("Введите количество секунд: ", out int seconds3))
+                        {
+                            Time time = new Time(seconds3);
+                            Console.WriteLine($"Какой сейчас час (целое число): {time.GetHours()}");
+                            Console.WriteLine($"Сколько минут прошло с начала текущего часа (целое число): {time.GetMinutes()}");
+                            Console.WriteLine($"Сколько секунд прошло с начала текущей минуты (целое число): {time.GetSeconds()}");
+
+                            Console.WriteLine("\nПроверка для заданных значений:");
+
+                            Time t1 = new Time(34056);
+                            Console.WriteLine("Для времени 34056 секунд часов: " + t1.GetHours());
+
+                            Time t2 = new Time(4532);
+                            Console.WriteLine("Для времени 4532 секунд минут: " + t2.GetMinutes());
+
+                            Time t3 = new Time(123);
+                            Console.WriteLine("Для времени 123 секунд секунд: " + t3.GetSeconds());
+                        }
+                    }
+                    
                     else
                     {
                         Console.WriteLine("Неверный выбор");
