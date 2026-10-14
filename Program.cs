@@ -44,6 +44,15 @@ internal class Program
                         {
                             Time time = new Time(seconds);
                             Console.WriteLine("Текстовая форма: " + time.ToString());
+
+                            Console.WriteLine("\nПроверка для заданных значений:");
+                            Time t1 = new Time(10);
+                            Console.WriteLine("10 секунд = " + t1);
+                            Time t2 = new Time(10000);
+                            Console.WriteLine("10000 секунд = " + t2);
+                            Time t3 = new Time(100000);
+                            Console.WriteLine("100000 секунд = " + t3);
+
                         }
                     }
                     else if (subchoice == "2")
