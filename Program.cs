@@ -112,6 +112,22 @@ internal class Program
                         Console.WriteLine("Неверный выбор");
                     }
                     break;
+
+                case "Сотрудники":
+                case "EmployeeDepartment":
+                case "ed":
+                case "3":
+                    Department it = new Department("IT");
+                    Employee petrov = new Employee("Петров", it);
+                    Employee kozlov = new Employee("Козлов", it);
+                    Employee sidorov = new Employee("Сидоров", it);
+                    it.Manager = kozlov;
+                    Console.WriteLine(petrov);
+                    Console.WriteLine(kozlov);
+                    Console.WriteLine(sidorov);
+                    break;
+
+
             }
 
 
@@ -123,6 +139,7 @@ internal class Program
         Console.WriteLine("\n--- Меню задач ---");
         Console.WriteLine("1 - Имена/Name/n");
         Console.WriteLine("2 - Время/Time/t");
+        Console.WriteLine("3 - Сотрудники/EmployeeDepartment/ed");
         Console.WriteLine("0 - Выход");
         Console.WriteLine("------------------");
     }
