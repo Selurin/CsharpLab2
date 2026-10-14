@@ -28,10 +28,60 @@ internal class Program
 
                 case "1.4":
                 case "14":
-                    if (TryReadInt("Введите количество секунд: ", out int seconds))
+                    Console.WriteLine("Выберите способ ввода времени:");
+                    Console.WriteLine("1 - ввести количество секунд");
+                    Console.WriteLine("2 - ввести часы, минуты, секунды через пробел");
+                    string? choice14 = Console.ReadLine();
+
+                    if (choice14 == "1")
                     {
-                        Time time = new Time(seconds);
-                        Console.WriteLine("Текстовая форма: " + time.ToString());
+                        if (TryReadInt("Введите количество секунд: ", out int seconds))
+                        {
+                            Time time = new Time(seconds);
+                            Console.WriteLine("Текстовая форма: " + time.ToString());
+                        }
+                    }
+                    else if (choice14 == "2")
+                    {
+                        Console.Write("Введите часы, минуты, секунды через пробел: ");
+                        string? input = Console.ReadLine();
+                        if (input != null)
+                        {
+                            string[] parts = input.Split(' ');
+
+                            if (parts.Length != 3)
+                            {
+                                Console.WriteLine("Ошибка: нужно ввести ровно 3 числа через пробел");
+                            }
+                            else
+                            {
+                                bool isValid1 = int.TryParse(parts[0], out int hours);
+                                bool isValid2 = int.TryParse(parts[1], out int minutes);
+                                bool isValid3 = int.TryParse(parts[2], out int secs);
+
+                                if (isValid1 && isValid2 && isValid3)
+                                {
+                                    Time time = new Time(hours, minutes, secs);
+                                    Console.WriteLine("Текстовая форма: " + time.ToString());
+
+                                    Console.WriteLine("Проверка для заданных значений:");
+
+                                    Time t1 = new Time(10000);
+                                    Console.WriteLine("10000 секунд = " + t1.ToString());
+
+                                    Time t2 = new Time(2, 3, 5);
+                                    Console.WriteLine("2 часа, 3 минуты, 5 секунд = " + t2.ToString());
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Ошибка: введены некорректные значения");
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Неверный выбор");
                     }
                     break;
             }

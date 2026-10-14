@@ -22,6 +22,20 @@ internal class Time
         }
     }
 
+    public Time(int hours, int minutes, int seconds)
+    {
+        if (hours < 0 || minutes < 0 || seconds < 0)
+        {
+            Console.WriteLine("Ошибка: время не может быть отрицательным");
+            this.seconds = 0;
+        }
+        else
+        {
+            int totalSeconds = hours * 3600 + minutes * 60 + seconds;
+            this.seconds = totalSeconds % 86400;
+        }
+    }
+
     public int Seconds
     {
         get { return this.seconds; }
