@@ -7,7 +7,7 @@ internal class Program
         do
         {
             PrintMenu();
-            Console.Write("Введите номер задачи (например, 1.1 или 11) или 0 для выхода: ");
+            Console.Write("Введите номер или имя класса задачи (например, Name или n или 1) или 0 для выхода: ");
             choice = Console.ReadLine()?.Trim() ?? "";
             switch (choice)
             {
@@ -15,8 +15,10 @@ internal class Program
                     Console.WriteLine("До свидания!");
                     break;
 
-                case "1.3":
-                case "13":
+                case "Name":
+                case "n":
+                case "Имена":
+                case "1":
                     Name name1 = new Name("", "Клеопатра", "");
                     Name name2 = new Name("Пушкин", "Александр", "Сергеевич");
                     Name name3 = new Name("Маяковский", "Владимир", "");
@@ -26,15 +28,17 @@ internal class Program
                     Console.WriteLine(name3);
                     break;
 
-                case "1.4":
-                case "14":
+                case "Time":
+                case "t":
+                case "Время":
+                case "2":
                     Console.WriteLine("Выберите способ ввода времени:");
                     Console.WriteLine("1 - ввести количество секунд");
                     Console.WriteLine("2 - ввести часы, минуты, секунды через пробел");
                     Console.WriteLine("3 - ввести количество секунд для возврата текущего времени");
-                    string? choice14 = Console.ReadLine();
+                    string? subchoice = Console.ReadLine();
 
-                    if (choice14 == "1")
+                    if (subchoice == "1")
                     {
                         if (TryReadInt("Введите количество секунд: ", out int seconds))
                         {
@@ -42,7 +46,7 @@ internal class Program
                             Console.WriteLine("Текстовая форма: " + time.ToString());
                         }
                     }
-                    else if (choice14 == "2")
+                    else if (subchoice == "2")
                     {
                         Console.Write("Введите часы, минуты, секунды через пробел: ");
                         string? input = Console.ReadLine();
@@ -81,7 +85,7 @@ internal class Program
                         }
                     }
 
-                    else if (choice14 == "3")
+                    else if (subchoice == "3")
                     {
                         if (TryReadInt("Введите количество секунд: ", out int seconds3))
                         {
@@ -102,7 +106,7 @@ internal class Program
                             Console.WriteLine("Для времени 123 секунд секунд: " + t3.GetSeconds());
                         }
                     }
-                    
+
                     else
                     {
                         Console.WriteLine("Неверный выбор");
@@ -117,8 +121,8 @@ internal class Program
     private static void PrintMenu()
     {
         Console.WriteLine("\n--- Меню задач ---");
-        Console.WriteLine("1.3 - Имена");
-        Console.WriteLine("1.4 - Время");
+        Console.WriteLine("1 - Имена/Name/n");
+        Console.WriteLine("2 - Время/Time/t");
         Console.WriteLine("0 - Выход");
         Console.WriteLine("------------------");
     }
